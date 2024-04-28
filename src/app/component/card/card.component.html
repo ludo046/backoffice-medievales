@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="cards_item" *ngFor="let card of createCard">
+        <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>{{card.name}}</mat-card-title>
+              <mat-card-subtitle>{{card.contact}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image [src]="card.picture" crossorigin="anonymous" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <p>{{card.phone}}</p>
+                <p>{{card.town}}</p>
+                <p>{{card.contry}}</p>
+                <p>{{card.postalCode}}</p>
+                <p>{{card.price}}</p>
+                <p>{{card.description}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button (click)="openDialog(card.id)">modifier</button>
+              <button mat-button (click)="deleteTroupe(card.id)">supprimer</button>
+            </mat-card-actions>
+          </mat-card>
+    </div>
+</div>

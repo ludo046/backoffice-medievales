@@ -1,0 +1,237 @@
+<app-nav></app-nav>
+    <div class="user">
+    <p>Bienvenue {{User.firstname}}</p>
+    <p *ngIf="User.isAdmin === true">Connecté en tant que <span class="lowercase">Admin</span></p>
+  </div>
+  <main class="site-wrapper">
+    <div class="pt-table desktop-768">
+      <div class="pt-tablecell page-home relative">
+        <div class="container">
+          <div class="hexagon-menu clear">
+            <div class="hexagon-item" [routerLink]="['/homeTroupes']" routerLinkActive="router-link-active">
+              <div class="hex-item">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <div class="hex-item">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <a class="hex-content">
+                <span class="hex-content-inner">
+                  <span class="title">Gestion des troupes</span>
+                </span>
+                <svg 
+                  viewBox="0 0 173.20508075688772 200"
+                  height="200"
+                  width="174"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path 
+                    d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                    fill="#1e2530"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="hexagon-item" [routerLink]="['/homeCampements']" routerLinkActive="router-link-active">
+              <div class="hex-item">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <div class="hex-item">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <a class="hex-content">
+                <span class="hex-content-inner">
+                  <span class="title">Gestion <br> des campements</span>
+                </span>
+                <svg 
+                  viewBox="0 0 173.20508075688772 200"
+                  height="200"
+                  width="174"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path 
+                    d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                    fill="#1e2530"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="hexagon-item" [routerLink]="['/homeArtisans']" routerLinkActive="router-link-active">
+              <div class="hex-item">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <div class="hex-item">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <a class="hex-content">
+                <span class="hex-content-inner">
+                  <span class="icon">
+                    <i class="fa fa-map-signs"></i>
+                  </span>
+                  <span class="title">gestion des artisans</span>
+                </span>
+                <svg
+                  viewBox="0 0 173.20508075688772 200"
+                  height="200"
+                  width="174"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                    fill="#1e2530"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="hexagon-item" [routerLink]="['/homeAnimations']" routerLinkActive="router-link-active">
+              <div class="hex-item">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <div class="hex-item">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <a class="hex-content">
+                <span class="hex-content-inner">
+                  <span class="icon">
+                    <i class="fa fa-map-signs"></i>
+                  </span>
+                  <span class="title">gestion des animations</span>
+                </span>
+                <svg
+                  viewBox="0 0 173.20508075688772 200"
+                  height="200"
+                  width="174"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                    fill="#1e2530"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="hexagon-item" [routerLink]="['/homeMarche']" routerLinkActive="router-link-active">
+              <div class="hex-item">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <div class="hex-item">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <a class="hex-content">
+                <span class="hex-content-inner">
+                  <span class="icon">
+                    <i class="fa fa-map-signs"></i>
+                  </span>
+                  <span class="title">gestion du marché</span>
+                </span>
+                <svg
+                  viewBox="0 0 173.20508075688772 200"
+                  height="200"
+                  width="174"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                    fill="#1e2530"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="hexagon-item" [routerLink]="['/homePartenaires']" routerLinkActive="router-link-active">
+              <div class="hex-item">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <div class="hex-item">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <a class="hex-content">
+                <span class="hex-content-inner">
+                  <span class="icon">
+                    <i class="fa fa-map-signs"></i>
+                  </span>
+                  <span class="title">gestion <br> des partenaires</span>
+                </span>
+                <svg
+                  viewBox="0 0 173.20508075688772 200"
+                  height="200"
+                  width="174"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                    fill="#1e2530"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div class="hexagon-item" [routerLink]="['/users']" routerLinkActive="router-link-active" *ngIf="User.isAdmin === true">
+              <div class="hex-item">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <div class="hex-item">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <a class="hex-content">
+                <span class="hex-content-inner">
+                  <span class="icon">
+                    <i class="fa fa-map-signs"></i>
+                  </span>
+                  <span class="title">gestion <br> des Utilisateurs</span>
+                </span>
+                <svg
+                  viewBox="0 0 173.20508075688772 200"
+                  height="200"
+                  width="174"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"
+                    fill="#1e2530"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  
+  
+  

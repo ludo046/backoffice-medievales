@@ -1,0 +1,50 @@
+<div class="container">
+    <h2 mat-dialog-title>Ajouter un partenaire :</h2>
+    <mat-dialog-content>En ajoutant un partenaire ici vous l'ajouterez également au site !</mat-dialog-content>
+    <form class="example-form" [formGroup]="form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Nom du partenaire</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+      
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="example-full-width">
+            <mat-label>Contact</mat-label>
+            <input matInput formControlName="contact">
+          </mat-form-field></td>
+          <td><mat-form-field class="example-full-width">
+            <mat-label>Téléphone</mat-label>
+            <input matInput type="tel" pattern="(0|(\\+33)|(0033))[1-9][0-9]{8}" maxlength="10" formControlName="phone">
+          </mat-form-field></td>
+          <td><mat-form-field class="example-full-width">
+            <mat-label>email</mat-label>
+            <input matInput type="tel" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" formControlName="email">
+          </mat-form-field></td>
+        </tr></table>
+      
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="example-full-width">
+            <mat-label>Ville</mat-label>
+            <input matInput placeholder="Ex. San Francisco" formControlName="town">
+          </mat-form-field></td>
+          <td><mat-form-field class="example-full-width">
+            <mat-label>Code Postal</mat-label>
+            <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" type="text" pattern="/[0-9]{5}/g" formControlName="postalCode">
+            <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+          </mat-form-field></td>
+        </tr></table>
+    
+        <p>
+            <mat-form-field class="example-full-width">
+                <mat-label>Montant</mat-label>
+                <input matInput formControlName="rising">
+              </mat-form-field>
+          </p>
+
+          <input class="file" type="file" accept=".jpg, .jpeg, .png, .gif, .mp4" (change)="onFileAdded($event)">
+      </form>
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close>Fermer</button>
+      <button mat-button mat-dialog-close (click)="createPartenaire()">Valider</button>
+    </mat-dialog-actions>
+</div>
