@@ -31,22 +31,34 @@ export class HomePartenairesComponent {
     this.allpartenaires = this.partenairesService.allPartenaires$.subscribe(
       (partenaire) => {
         console.log(partenaire);
-        
+
         this.partenaires = partenaire
+        this.partenaires.sort(function compare(a, b) {
+          if (a.montant > b.montant)
+             return -1;
+          if (a.montant < b.montant )
+             return 1;
+          return 0;
+        });
         for(let i = 0; i < this.partenaires.length; i++){
          const card = {
            id : this.partenaires[i].id,
-           name : this.partenaires[i].name,
+           partenaireName : this.partenaires[i].partenaireName,
            contact : this.partenaires[i].contact,
-           phone : this.partenaires[i].phone,
            email : this.partenaires[i].email,
-           town : this.partenaires[i].town,
-           postalCode : this.partenaires[i].postalCode,
-           rising: this.partenaires[i].rising,
+           phone : this.partenaires[i].phone,
+           formule : this.partenaires[i].formule,
+           montant : this.partenaires[i].montant,
+           adresse : this.partenaires[i].adresse,
+           reglement: this.partenaires[i].reglement,
+           site: this.partenaires[i].site,
+           activate: this.partenaires[i].activate,
            picture: this.partenaires[i].picture
          }
          this.createCard.push(card)
         }
+
+
       },
       (error) => {
         this.errorMsg = JSON.stringify(error);

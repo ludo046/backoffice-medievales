@@ -8,6 +8,10 @@ import { ArtisanService } from '../service/artisan/artisan.service';
 import { ModifyArtisanComponent } from '../dialog/modify/modify-artisan/modify-artisan.component';
 import { ModifyPartenaireComponent } from '../dialog/modify/modify-partenaire/modify-partenaire.component';
 import { PartenaireService } from '../service/partenaire/partenaire.service';
+import { AnimationService } from '../service/animation/animation.service';
+import { ModifyAnimationComponent } from '../dialog/modify/modify-animation/modify-animation.component';
+import { ArchiveService } from '../service/archive/archive.service';
+import { ModifyArchiveComponent } from '../dialog/modify/modify-archive/modify-archive.component';
 
 @Component({
   selector: 'app-card',
@@ -25,6 +29,8 @@ export class CardComponent implements OnInit{
     private campementService : CampementsService,
     private artisanService : ArtisanService,
     private partenaireService : PartenaireService,
+    private animationService : AnimationService,
+    private archiveService : ArchiveService,
     ) {}
 
   ngOnInit(): void {
@@ -44,6 +50,12 @@ export class CardComponent implements OnInit{
     }
     if(this.component === "homePartenaires"){
       this.dialog.open(ModifyPartenaireComponent, {data : id})
+    }
+    if(this.component === "homeAnimations"){
+      this.dialog.open(ModifyAnimationComponent, {data : id})
+    }
+    if(this.component === "HomeArchives"){
+      this.dialog.open(ModifyArchiveComponent, {data : id})
     }
   }
 
@@ -71,6 +83,20 @@ export class CardComponent implements OnInit{
     }
     if(this.component === "homePartenaires"){
       this.partenaireService.deletePartenaire(id).subscribe(
+        () => {
+          window.location.reload()
+        }  
+      )
+    }
+    if(this.component === "homeAnimations"){
+      this.animationService.deleteTroupe(id).subscribe(
+        () => {
+          window.location.reload()
+        }  
+      )
+    }
+    if(this.component === "HomeArchives"){
+      this.archiveService.deleteArchive(id).subscribe(
         () => {
           window.location.reload()
         }  

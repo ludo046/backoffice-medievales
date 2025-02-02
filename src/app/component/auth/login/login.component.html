@@ -1,15 +1,18 @@
 <mat-card [formGroup]="form">
+    <img src="../../../../assets/image/logo.png" alt="">
+    <h1>BACK OFFICE</h1>
     <mat-form-field>
     <mat-label>Enter your email</mat-label>
-    <input matInput placeholder="pat@example.com" formControlName="email"  required>
+    <input matInput placeholder="pat@example.com" formControlName="email"  required (keyup.enter)="login()">
 
 </mat-form-field>
     <mat-form-field>
         <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required (keyup.enter)="login()">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="login()" >Se connecter</button>
+    <p *ngIf="errMsg">{{errMsg}}</p>
+    <button mat-raised-button color="primary" (click)="login()">Se connecter</button>
 </mat-card>

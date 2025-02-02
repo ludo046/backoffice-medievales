@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArtisanService } from '../../../service/artisan/artisan.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Addartisan } from '../../../../interface/artisan';
+import { AddArtisans } from '../../../../interface/artisan';
 
 @Component({
   selector: 'app-add-artisan',
@@ -27,12 +27,14 @@ export class AddArtisanComponent implements OnInit{
       name: this.formbuilder.control('',Validators.required),
       contact: this.formbuilder.control(''),
       phone: this.formbuilder.control(''),
+      email: this.formbuilder.control(''),
+      person: this.formbuilder.control(''),
       town: this.formbuilder.control('', Validators.required),
       contry: this.formbuilder.control('',Validators.required),
       postalCode: this.formbuilder.control('', Validators.required),
       description : this.formbuilder.control('', Validators.required),
       price: this.formbuilder.control('', Validators.required),
-      taille: this.formbuilder.control('', Validators.required),
+      taille : this.formbuilder.control('', Validators.required),
       picture : this.formbuilder.control('')
     })
   }
@@ -41,11 +43,13 @@ export class AddArtisanComponent implements OnInit{
     this.file = (event.target as HTMLInputElement).files[0];
   }
 
-  createTroupe():void{
-    const artisan : Addartisan = {
+  createArtisans():void{
+    const artisan : AddArtisans = {
       name : this.form.get('name').value,
       contact : this.form.get('contact').value,
       phone : this.form.get('phone').value,
+      email : this.form.get('email').value,
+      person : this.form.get('person').value, 
       town : this.form.get('town').value,
       contry : this.form.get('contry').value,
       postalCode : this.form.get('postalCode').value,

@@ -52,7 +52,7 @@ export class PasswordComponent implements OnInit{
     },
     error => {
       this.errMsg = error.error.message,
-      console.log(error.error.message);
+      console.log(this.errMsg);
     })
     
   }

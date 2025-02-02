@@ -40,16 +40,17 @@ export class HomeTroupesComponent implements OnInit{
         for(let i = 0; i < this.troupes.length; i++){
          const card = {
            id : this.troupes[i].id,
-           name : this.troupes[i].name,
+           name : this.troupes[i].companieName,
            contact : this.troupes[i].contact,
            phone : this.troupes[i].phone,
            //createdAt : this.troupes[i].createdAt,
-           town : this.troupes[i].town,
-           contry : this.troupes[i].contry,
+           town : this.troupes[i].ville,
+           contry : this.troupes[i].pays,
            postalCode : this.troupes[i].postalCode,
            description : this.troupes[i].description,
            price: this.troupes[i].price,
-           picture: this.troupes[i].picture
+           picture: this.troupes[i].picture,
+           activate: this.troupes[i].activate
          }
          this.createCard.push(card)
         }

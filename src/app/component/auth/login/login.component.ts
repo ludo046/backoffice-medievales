@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth/auth.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit{
   public hide = true;
   public form :  FormGroup;
   public errMsg : string;
+  public isAuth = new BehaviorSubject<boolean>(false)
 
   constructor(
     private formBuilder : FormBuilder,
@@ -40,7 +42,10 @@ export class LoginComponent implements OnInit{
       result => {
       sessionStorage[`session`] = JSON.stringify(result);
       setTimeout(() => {
-        this.router.navigate(['home'])
+        if(sessionStorage.getItem('session')){
+          this.isAuth.next(true)
+          this.router.navigate(['home'])
+        }
       }, 1000);
     },
     error => {

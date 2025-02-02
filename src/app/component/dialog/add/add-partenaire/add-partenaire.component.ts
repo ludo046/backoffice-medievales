@@ -24,13 +24,16 @@ export class AddPartenaireComponent {
 
   ngOnInit(): void {
     this.form = this.formbuilder.group({
-      name: this.formbuilder.control('',Validators.required),
+      partenaireName: this.formbuilder.control('',Validators.required),
       contact: this.formbuilder.control(''),
-      phone: this.formbuilder.control(''),
       email: this.formbuilder.control('',Validators.required),
-      town: this.formbuilder.control('', Validators.required),
-      postalCode: this.formbuilder.control('', Validators.required),
-      rinsing: this.formbuilder.control('', Validators.required),
+      phone: this.formbuilder.control(''),
+      formule: this.formbuilder.control('', Validators.required),
+      montant: this.formbuilder.control('', Validators.required),
+      adresse: this.formbuilder.control('', Validators.required),
+      reglement: this.formbuilder.control('', Validators.required),
+      site: this.formbuilder.control('', Validators.required),
+      texte: this.formbuilder.control(''),
       picture : this.formbuilder.control('')
     })
   }
@@ -41,13 +44,16 @@ export class AddPartenaireComponent {
 
   createPartenaire():void{
     const partenaire : addPartenaire = {
-      name : this.form.get('name').value,
+      partenaireName : this.form.get('partenaireName').value,
       contact : this.form.get('contact').value,
-      phone : this.form.get('phone').value,
       email : this.form.get('email').value,
-      town : this.form.get('town').value,
-      postalCode : this.form.get('postalCode').value,
-      rising : this.form.get('rising').value,
+      phone : this.form.get('phone').value,
+      formule : this.form.get('formule').value,
+      montant : this.form.get('montant').value,
+      adresse : this.form.get('adresse').value,
+      reglement : this.form.get('reglement').value,
+      site : this.form.get('site').value,
+      texte : this.form.get('texte').value,
       picture : this.file
     }
     console.log(partenaire);

@@ -38,7 +38,6 @@ export class AddUserComponent implements OnInit{
       lastname : this.form.get('lastname').value,
       phone : this.form.get('phone').value,
       email : this.form.get('email').value,
-      password : JSON.stringify(Math.floor(10000000 + Math.random() * 900000)),
       isAdmin : false,
     }
     this.authService.register(user).subscribe(

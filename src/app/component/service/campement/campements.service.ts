@@ -34,6 +34,8 @@ export class CampementsService {
     formData.append('name', addcampement.name)
     formData.append('contact', addcampement.contact)
     formData.append('phone', addcampement.phone)
+    formData.append('email', addcampement.email)
+    formData.append('person', addcampement.person)
     formData.append('town', addcampement.town)
     formData.append('contry', addcampement.contry)
     formData.append('postalCode', addcampement.postalCode)
@@ -56,17 +58,20 @@ export class CampementsService {
     )
   }
 
-  modifyCampement(modifycampement : getTroupe){
+  modifyCampement(modifycampement){
     const formData = new FormData();
     formData.append('id', modifycampement.id)
-    formData.append('name', modifycampement.name)
+    formData.append('companieName', modifycampement.companieName)
     formData.append('contact', modifycampement.contact)
     formData.append('phone', modifycampement.phone)
-    formData.append('town', modifycampement.town)
-    formData.append('contry', modifycampement.contry)
+    formData.append('email', modifycampement.email)
+    formData.append('person', modifycampement.person)
+    formData.append('ville', modifycampement.ville)
+    formData.append('pays', modifycampement.pays)
     formData.append('postalCode', modifycampement.postalCode)
     formData.append('description', modifycampement.description)
     formData.append('price', modifycampement.price)
+    formData.append('activate', modifycampement.activate)
     formData.append('image', modifycampement.picture);
     return this.httpClient.put(`${this.ressourceUrl}modify/${modifycampement.id}`, formData)
     }

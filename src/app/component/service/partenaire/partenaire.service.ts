@@ -20,13 +20,16 @@ export class PartenaireService {
 
   createPartenaire(addpartenaire : addPartenaire):Observable<{}>{
     const formData = new FormData();
-    formData.append('name', addpartenaire.name)
+    formData.append('partenaireName', addpartenaire.partenaireName)
     formData.append('contact', addpartenaire.contact)
-    formData.append('phone', addpartenaire.phone)
     formData.append('email', addpartenaire.email)
-    formData.append('town', addpartenaire.town)
-    formData.append('postalCode', addpartenaire.postalCode)
-    formData.append('rising', addpartenaire.rising)
+    formData.append('phone', addpartenaire.phone)
+    formData.append('formule', addpartenaire.formule)
+    formData.append('montant', addpartenaire.montant)
+    formData.append('adresse', addpartenaire.adresse)
+    formData.append('reglement', addpartenaire.reglement)
+    formData.append('site', addpartenaire.site)
+    formData.append('texte',addpartenaire.texte)
     formData.append('image', addpartenaire.picture);
     console.log(formData);
     
@@ -48,13 +51,17 @@ export class PartenaireService {
   modifyPartenaire(modifypartenaire : getPartenaire){
     const formData = new FormData();
     formData.append('id', modifypartenaire.id)
-    formData.append('name', modifypartenaire.name)
+    formData.append('partenaireName', modifypartenaire.partenaireName)
     formData.append('contact', modifypartenaire.contact)
-    formData.append('phone', modifypartenaire.phone)
     formData.append('email', modifypartenaire.email)
-    formData.append('town', modifypartenaire.town)
-    formData.append('postalCode', modifypartenaire.postalCode)
-    formData.append('rising', modifypartenaire.rising)
+    formData.append('phone', modifypartenaire.phone)
+    formData.append('formule', modifypartenaire.formule)
+    formData.append('montant', modifypartenaire.montant)
+    formData.append('adresse', modifypartenaire.adresse)
+    formData.append('reglement', modifypartenaire.reglement)
+    formData.append('site', modifypartenaire.site)
+    formData.append('texte', modifypartenaire.texte)
+    formData.append('activate', modifypartenaire.activate)
     formData.append('image', modifypartenaire.picture);
     return this.httpClient.put(`${this.ressourceUrl}modify/${modifypartenaire.id}`, formData)
     }

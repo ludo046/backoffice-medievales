@@ -6,13 +6,14 @@
               <mat-card-subtitle>{{card.contact}}</mat-card-subtitle>
             </mat-card-header>
             <img mat-card-image [src]="card.picture" crossorigin="anonymous" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-                <p>{{card.phone}}</p>
-                <p>{{card.town}}</p>
-                <p>{{card.contry}}</p>
-                <p>{{card.postalCode}}</p>
-                <p>{{card.price}}</p>
-                <p>{{card.description}}</p>
+            <mat-card-content *ngIf="component !== 'HomeArchives'">
+                <p>telephone : {{card.phone}}</p>
+                <p>ville : {{card.town}}</p>
+                <p>pays : {{card.contry}}</p>
+                <p>code postal : {{card.postalCode}}</p>
+                <p>description : {{card.description}}</p>
+                <p>actif : {{card.activate}}</p>
+                <p>montant : {{card.price}}</p>
             </mat-card-content>
             <mat-card-actions>
               <button mat-button (click)="openDialog(card.id)">modifier</button>

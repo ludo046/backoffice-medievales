@@ -8,7 +8,6 @@ export interface userModel{
     lastname : String,
     phone : String,
     email : String,
-    password : string,
     isAdmin : Boolean
 }
 
@@ -16,4 +15,13 @@ export interface createPassword{
     email: String,
     code: String, 
     password: String
+}
+
+export interface getUserModel{
+    id : string,
+    firstname : String,
+    lastname : String,
+    phone : String,
+    email : String,
+    isAdmin : Boolean
 }

@@ -2,19 +2,30 @@
     <h2 mat-dialog-title>Ajouter une troupe :</h2>
     <mat-dialog-content>En ajoutant une troupes ici vous l'ajouterez également au site !</mat-dialog-content>
     <form class="example-form" [formGroup]="form">
-        <mat-form-field class="example-full-width">
+      <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width">
           <mat-label>Nom de la troupe</mat-label>
           <input matInput formControlName="name">
-        </mat-form-field>
+        </mat-form-field></td>
+        
+        <td><mat-form-field class="example-full-width">
+          <mat-label>Contact de la troupe</mat-label>
+          <input matInput formControlName="contact">
+        </mat-form-field></td>
+      </tr></table>
       
         <table class="example-full-width" cellspacing="0"><tr>
           <td><mat-form-field class="example-full-width">
-            <mat-label>Contact</mat-label>
-            <input matInput formControlName="contact">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
           </mat-form-field></td>
           <td><mat-form-field class="example-full-width">
             <mat-label>Téléphone</mat-label>
             <input matInput type="tel" pattern="(0|(\\+33)|(0033))[1-9][0-9]{8}" maxlength="10" formControlName="phone">
+          </mat-form-field></td>
+          <td><mat-form-field class="example-full-width">
+            <mat-label>Nombre de personnes</mat-label>
+            <input matInput formControlName="person" type="number">
           </mat-form-field></td>
         </tr></table>
       

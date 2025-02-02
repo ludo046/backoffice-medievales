@@ -28,6 +28,8 @@ export class AddCampementComponent implements OnInit{
       name: this.formbuilder.control('',Validators.required),
       contact: this.formbuilder.control(''),
       phone: this.formbuilder.control(''),
+      email: this.formbuilder.control(''),
+      person: this.formbuilder.control(''),
       town: this.formbuilder.control('', Validators.required),
       contry: this.formbuilder.control('',Validators.required),
       postalCode: this.formbuilder.control('', Validators.required),
@@ -41,11 +43,13 @@ export class AddCampementComponent implements OnInit{
     this.file = (event.target as HTMLInputElement).files[0];
   }
 
-  createTroupe():void{
+  createCampement():void{
     const campement : addcampement = {
       name : this.form.get('name').value,
       contact : this.form.get('contact').value,
       phone : this.form.get('phone').value,
+      email : this.form.get('email').value,
+      person : this.form.get('person').value, 
       town : this.form.get('town').value,
       contry : this.form.get('contry').value,
       postalCode : this.form.get('postalCode').value,

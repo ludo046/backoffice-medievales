@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="cards_item" *ngFor="let card of createCard">
+        <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>{{card.year}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image [src]="card.picture" crossorigin="anonymous" alt="Photo of a Shiba Inu">
+            <iframe [src]="card.teaser" frameborder="0"></iframe>
+            <mat-card-actions>
+              <button mat-button (click)="openDialog(card.id)">modifier</button>
+              <button mat-button (click)="deleteArchive(card.id)">supprimer</button>
+            </mat-card-actions>
+          </mat-card>
+    </div>
+</div>

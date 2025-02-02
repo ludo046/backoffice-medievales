@@ -24,6 +24,8 @@ export class TroupeService {
     formData.append('name', addtroupe.name)
     formData.append('contact', addtroupe.contact)
     formData.append('phone', addtroupe.phone)
+    formData.append('email', addtroupe.email)
+    formData.append('person', addtroupe.person)
     formData.append('town', addtroupe.town)
     formData.append('contry', addtroupe.contry)
     formData.append('postalCode', addtroupe.postalCode)
@@ -50,14 +52,17 @@ export class TroupeService {
   modifyTroupe(modifyTroupe : getTroupe){
     const formData = new FormData();
     formData.append('id', modifyTroupe.id)
-    formData.append('name', modifyTroupe.name)
+    formData.append('companieName', modifyTroupe.companieName)
     formData.append('contact', modifyTroupe.contact)
     formData.append('phone', modifyTroupe.phone)
-    formData.append('town', modifyTroupe.town)
-    formData.append('contry', modifyTroupe.contry)
+    formData.append('email', modifyTroupe.email)
+    formData.append('person', modifyTroupe.person)
+    formData.append('ville', modifyTroupe.ville)
+    formData.append('pays', modifyTroupe.pays)
     formData.append('postalCode', modifyTroupe.postalCode)
     formData.append('description', modifyTroupe.description)
     formData.append('price', modifyTroupe.price)
+    formData.append('activate', modifyTroupe.activate)
     formData.append('image', modifyTroupe.picture);
     return this.httpClient.put(`${this.ressourceUrl}modify/${modifyTroupe.id}`, formData)
     }

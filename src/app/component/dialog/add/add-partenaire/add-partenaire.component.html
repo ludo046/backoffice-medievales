@@ -2,44 +2,67 @@
     <h2 mat-dialog-title>Ajouter un partenaire :</h2>
     <mat-dialog-content>En ajoutant un partenaire ici vous l'ajouterez également au site !</mat-dialog-content>
     <form class="example-form" [formGroup]="form">
-        <mat-form-field class="example-full-width">
+      <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width">
           <mat-label>Nom du partenaire</mat-label>
-          <input matInput formControlName="name">
-        </mat-form-field>
-      
+          <input matInput formControlName="partenaireName">
+        </mat-form-field></td>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>Contact</mat-label>
+          <input matInput formControlName="contact">
+        </mat-form-field></td>
+      </tr></table>
+
         <table class="example-full-width" cellspacing="0"><tr>
           <td><mat-form-field class="example-full-width">
-            <mat-label>Contact</mat-label>
-            <input matInput formControlName="contact">
+            <mat-label>email</mat-label>
+            <input matInput type="email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" formControlName="email">
           </mat-form-field></td>
           <td><mat-form-field class="example-full-width">
             <mat-label>Téléphone</mat-label>
             <input matInput type="tel" pattern="(0|(\\+33)|(0033))[1-9][0-9]{8}" maxlength="10" formControlName="phone">
           </mat-form-field></td>
           <td><mat-form-field class="example-full-width">
-            <mat-label>email</mat-label>
-            <input matInput type="tel" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" formControlName="email">
+            <mat-label>Adresse</mat-label>
+            <input matInput formControlName="adresse">
           </mat-form-field></td>
         </tr></table>
       
         <table class="example-full-width" cellspacing="0"><tr>
           <td><mat-form-field class="example-full-width">
-            <mat-label>Ville</mat-label>
-            <input matInput placeholder="Ex. San Francisco" formControlName="town">
+            <mat-label>Montant</mat-label>
+            <input matInput formControlName="montant">
           </mat-form-field></td>
-          <td><mat-form-field class="example-full-width">
-            <mat-label>Code Postal</mat-label>
-            <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" type="text" pattern="/[0-9]{5}/g" formControlName="postalCode">
-            <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+          <td><mat-form-field>
+            <mat-label>Réglement</mat-label>
+            <mat-select formControlName="reglement">
+              <mat-option value="Chèque">Chèque</mat-option>
+              <mat-option value="Virement">Virement</mat-option>
+              <mat-option value="Espèce">Espèce</mat-option>
+            </mat-select>
+          </mat-form-field></td>
+          <td><mat-form-field>
+            <mat-label>Formule</mat-label>
+            <mat-select formControlName="formule">
+              <mat-option value="Ami">Ami</mat-option>
+              <mat-option value="Sponsors">Sponsors</mat-option>
+              <mat-option value="Partenaire">Partenaire</mat-option>
+              <mat-option value="Verte">Verte</mat-option>
+              <mat-option value="Parrainage">Parrainage</mat-option>
+            </mat-select>
           </mat-form-field></td>
         </tr></table>
     
-        <p>
-            <mat-form-field class="example-full-width">
-                <mat-label>Montant</mat-label>
-                <input matInput formControlName="rising">
-              </mat-form-field>
-          </p>
+        <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width">
+                <mat-label>Site internet</mat-label>
+                <input matInput formControlName="site">
+              </mat-form-field></td>
+              <td><mat-form-field class="example-full-width">
+                <mat-label>Texte</mat-label>
+                <textarea matInput formControlName="texte"></textarea>
+              </mat-form-field></td>
+        </tr></table>
 
           <input class="file" type="file" accept=".jpg, .jpeg, .png, .gif, .mp4" (change)="onFileAdded($event)">
       </form>

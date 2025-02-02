@@ -36,16 +36,17 @@ export class HomeArtisansComponent {
         for(let i = 0; i < this.artisans.length; i++){
          const card = {
            id : this.artisans[i].id,
-           name : this.artisans[i].name,
+           name : this.artisans[i].companieName,
            contact : this.artisans[i].contact,
            phone : this.artisans[i].phone,
            //createdAt : this.artisans[i].createdAt,
-           town : this.artisans[i].town,
-           contry : this.artisans[i].contry,
+           town : this.artisans[i].ville,
+           contry : this.artisans[i].pays,
            postalCode : this.artisans[i].postalCode,
            description : this.artisans[i].description,
            price: this.artisans[i].price,
-           picture: this.artisans[i].picture
+           picture: this.artisans[i].picture,
+           activate: this.artisans[i].activate
          }
          this.createCard.push(card)
         }

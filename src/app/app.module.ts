@@ -36,6 +36,17 @@ import { AddArtisanComponent } from './component/dialog/add/add-artisan/add-arti
 import { ModifyArtisanComponent } from './component/dialog/modify/modify-artisan/modify-artisan.component';
 import { AddPartenaireComponent } from './component/dialog/add/add-partenaire/add-partenaire.component';
 import { ModifyPartenaireComponent } from './component/dialog/modify/modify-partenaire/modify-partenaire.component';
+import { CreateUserComponent } from './component/auth/create-user/create-user.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatOption } from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
+import { AddAnimationComponent } from './component/dialog/add/add-animation/add-animation.component';
+import { ModifyAnimationComponent } from './component/dialog/modify/modify-animation/modify-animation.component';
+import {MatTableModule} from '@angular/material/table';
+import { AddArchiveComponent } from './component/dialog/add/add-archive/add-archive.component';
+import { HomeArchiveComponent } from './component/archive/home-archive/home-archive.component';
+import { ModifyArchiveComponent } from './component/dialog/modify/modify-archive/modify-archive.component';
+import { ArchiveCardComponent } from './component/archive-card/archive-card.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +71,14 @@ import { ModifyPartenaireComponent } from './component/dialog/modify/modify-part
     AddArtisanComponent,
     ModifyArtisanComponent,
     AddPartenaireComponent,
-    ModifyPartenaireComponent
+    ModifyPartenaireComponent,
+    CreateUserComponent,
+    AddAnimationComponent,
+    ModifyAnimationComponent,
+    AddArchiveComponent,
+    HomeArchiveComponent,
+    ModifyArchiveComponent,
+    ArchiveCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,12 +95,17 @@ import { ModifyPartenaireComponent } from './component/dialog/modify/modify-part
     ReactiveFormsModule,
     MatDialogContent,
     MatDialogActions,
-    MatDialogClose
+    MatDialogClose,
+    MatSlideToggleModule,
+    MatOption,
+    MatSelectModule,
+    MatTableModule
   ],
 
   providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     provideAnimationsAsync(),
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},HttpClient, CardComponent
+    HttpClient, CardComponent
 
   ],
   bootstrap: [AppComponent]

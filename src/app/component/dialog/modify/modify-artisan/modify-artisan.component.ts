@@ -47,12 +47,15 @@ export class ModifyArtisanComponent implements OnInit{
       name: this.formbuilder.control('',Validators.required),
       contact: this.formbuilder.control(''),
       phone: this.formbuilder.control(''),
+      email: this.formbuilder.control('', Validators.required),
       town: this.formbuilder.control('', Validators.required),
       contry: this.formbuilder.control('',Validators.required),
       postalCode: this.formbuilder.control('', Validators.required),
       description : this.formbuilder.control('', Validators.required),
       price: this.formbuilder.control('', Validators.required),
+      person:this.formbuilder.control('', Validators.required),
       taille: this.formbuilder.control('', Validators.required),
+      activate: this.formbuilder.control(''),
       picture : this.formbuilder.control('')
     })
   }
@@ -61,21 +64,24 @@ export class ModifyArtisanComponent implements OnInit{
     this.file = (event.target as HTMLInputElement).files[0];
   }
 
-  modifyArtisan(){
+  modifyArtisans(){
     if(this.file === undefined){
       this.file = this.artisan.picture
     }
     const artisan : getArtisans = {
       id : this.artisan.id,
-      name : this.form.get('name').value,
+      companieName : this.form.get('name').value,
       contact : this.form.get('contact').value,
       phone : this.form.get('phone').value,
-      town : this.form.get('town').value,
-      contry : this.form.get('contry').value,
+      email : this.form.get('email').value,
+      ville : this.form.get('town').value,
+      pays : this.form.get('contry').value,
       postalCode : this.form.get('postalCode').value,
       description : this.form.get('description').value,
       price : this.form.get('price').value,
+      person : this.form.get('person').value,
       taille: this.form.get('taille').value,
+      activate: this.form.get('activate').value,
       picture : this.file
     }
     console.log(artisan);

@@ -1,7 +1,9 @@
 export interface addtroupe{
         name : string,
         contact : string,
+        email : string
         phone : string,
+        person : string,
         town : string,
         contry : string,
         postalCode : string,
@@ -12,13 +14,16 @@ export interface addtroupe{
 
 export interface getTroupe{
         id: any,
-        name : string,
+        companieName : string,
         contact : string,
+        email: string,
         phone : string,
-        town : string,
-        contry : string,
+        person: string,
+        ville : string,
+        pays : string,
         postalCode : string,
         description : string,
         price : string,
         picture : any,
+        activate: string
 }
