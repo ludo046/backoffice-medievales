@@ -17,6 +17,8 @@ export class HomePartenairesComponent {
   public createCard = [];
   public errorMsg : string;
   public message : string;
+  private totalArray = []
+  public total
 
   constructor(
     public dialog: MatDialog,
@@ -41,6 +43,8 @@ export class HomePartenairesComponent {
           return 0;
         });
         for(let i = 0; i < this.partenaires.length; i++){
+          this.totalArray.push(JSON.parse(this.partenaires[i].montant))
+          
          const card = {
            id : this.partenaires[i].id,
            partenaireName : this.partenaires[i].partenaireName,
@@ -57,8 +61,13 @@ export class HomePartenairesComponent {
          }
          this.createCard.push(card)
         }
-
-
+        console.log(this.totalArray);
+        // for (let j = 0; j < this.totalArray.length;j++) {
+        //   this.total += this.totalArray[j]
+        // }
+        this.total = this.totalArray.reduce((a,b) => a+b)
+        console.log(this.total);
+        
       },
       (error) => {
         this.errorMsg = JSON.stringify(error);

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule} from '@angular/material/button';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AppRoutingModule } from './app-routing.module';
@@ -37,12 +37,12 @@ import { ModifyArtisanComponent } from './component/dialog/modify/modify-artisan
 import { AddPartenaireComponent } from './component/dialog/add/add-partenaire/add-partenaire.component';
 import { ModifyPartenaireComponent } from './component/dialog/modify/modify-partenaire/modify-partenaire.component';
 import { CreateUserComponent } from './component/auth/create-user/create-user.component';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatOption } from '@angular/material/core';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule} from '@angular/material/select';
 import { AddAnimationComponent } from './component/dialog/add/add-animation/add-animation.component';
 import { ModifyAnimationComponent } from './component/dialog/modify/modify-animation/modify-animation.component';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule} from '@angular/material/table';
 import { AddArchiveComponent } from './component/dialog/add/add-archive/add-archive.component';
 import { HomeArchiveComponent } from './component/archive/home-archive/home-archive.component';
 import { ModifyArchiveComponent } from './component/dialog/modify/modify-archive/modify-archive.component';

@@ -1,6 +1,14 @@
 
     .example-card {
         width: 300px;
+        height: max-content;
+        margin-bottom: 20px;
+            mat-card-title{
+                width: 280px;
+                overflow: hidden !important; 
+                white-space: nowrap !important;
+                text-overflow: ellipsis !important;
+            }
       }
       
 img{
@@ -13,6 +21,8 @@ img{
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
+
 }
+
 
 

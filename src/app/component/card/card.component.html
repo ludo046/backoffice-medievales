@@ -2,11 +2,12 @@
     <div class="cards_item" *ngFor="let card of createCard">
         <mat-card class="example-card">
             <mat-card-header>
-              <mat-card-title>{{card.name}}</mat-card-title>
+              <mat-card-title *ngIf="component === 'homeArchives'">{{card.name}}</mat-card-title>
+              <mat-card-title *ngIf="component === 'homePartenaires'" class="name">{{card.partenaireName}}</mat-card-title>
               <mat-card-subtitle>{{card.contact}}</mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image [src]="card.picture" crossorigin="anonymous" alt="Photo of a Shiba Inu">
-            <mat-card-content *ngIf="component !== 'HomeArchives'">
+            <img mat-card-image [src]="card.picture" crossorigin="anonymous" alt="photo">
+            <mat-card-content *ngIf="component !== 'homePartenaires'">
                 <p>telephone : {{card.phone}}</p>
                 <p>ville : {{card.town}}</p>
                 <p>pays : {{card.contry}}</p>
@@ -15,6 +16,11 @@
                 <p>actif : {{card.activate}}</p>
                 <p>montant : {{card.price}}</p>
             </mat-card-content>
+            <mat-card-content *ngIf="component === 'homePartenaires'">
+              <p>formule : {{card.formule}}</p>
+              <p>montant : {{card.montant}}€</p>
+              <p>état : <span *ngIf="card.activate === true">actif</span><span *ngIf="card.activate === false">non actif</span></p>
+          </mat-card-content>
             <mat-card-actions>
               <button mat-button (click)="openDialog(card.id)">modifier</button>
               <button mat-button (click)="deleteTroupe(card.id)">supprimer</button>
