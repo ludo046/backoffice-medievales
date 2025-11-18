@@ -32,6 +32,7 @@ export class ModifyCampementComponent {
 
   ngOnInit(): void {
     this.campementService.getSingleCampement(this.data)
+    console.log(this.data)
     this.mycampement = this.campementService.singlecampement$.subscribe(
       (campement) => {
         this.campement = campement;

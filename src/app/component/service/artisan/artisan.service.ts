@@ -48,7 +48,7 @@ export class ArtisanService {
   }
 
   getSingleArtisan(artisanId: number){
-    return this.httpClient.get(`${this.ressourceUrl}get/`+artisanId).subscribe(
+    return this.httpClient.get(`${this.ressourceUrl}get/`+ artisanId).subscribe(
       (ressource) => {
         this.singleArtisan$.next(ressource);
       },
