@@ -12,6 +12,7 @@ import { AnimationService } from '../service/animation/animation.service';
 import { ModifyAnimationComponent } from '../dialog/modify/modify-animation/modify-animation.component';
 import { ArchiveService } from '../service/archive/archive.service';
 import { ModifyArchiveComponent } from '../dialog/modify/modify-archive/modify-archive.component';
+import { AuthService } from '../service/auth/auth.service';
 
 @Component({
   selector: 'app-card',
@@ -20,8 +21,12 @@ import { ModifyArchiveComponent } from '../dialog/modify/modify-archive/modify-a
 })
 export class CardComponent implements OnInit{
   @Input() createCard: [];
+  @Input() section: string | null = null; 
   public cardId
   private component : string
+  public user: any;
+  permissionKey: 'troupe' | 'campement' | 'artisan' | 'animation' | 'marche' | 'partenaire' | 'admin' = 'artisan';
+
 
   constructor(
     public dialog: MatDialog,
@@ -31,11 +36,43 @@ export class CardComponent implements OnInit{
     private partenaireService : PartenaireService,
     private animationService : AnimationService,
     private archiveService : ArchiveService,
+    private authService: AuthService
     ) {}
 
   ngOnInit(): void {
-    this.component = window.location.href.split('/')[3]
+     this.component = window.location.href.split('/')[3];
+  this.user = this.authService.getCurrentUser();
+
+  // 🔑 mapping page → permission
+  switch (this.component) {
+    case 'homeTroupes':
+      this.permissionKey = 'troupe';
+      break;
+
+    case 'homeCampements':
+      this.permissionKey = 'campement';
+      break;
+
+    case 'homeArtisans':
+      this.permissionKey = 'artisan';
+      break;
+
+    case 'homePartenaires':
+      this.permissionKey = 'partenaire';
+      break;
+
+    case 'homeAnimations':
+      this.permissionKey = 'animation';
+      break;
+
+    case 'HomeArchives':
+      this.permissionKey = 'admin'; // ou autre si tu veux restreindre
+      break;
+
+    default:
+      this.permissionKey = 'admin';
   }
+}
 
   openDialog(id : number) {
     this.cardId = id

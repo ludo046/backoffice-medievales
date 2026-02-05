@@ -40,8 +40,6 @@ export class CreateUserComponent implements OnInit{
       role: this.form.get('role').value,
       commission: this.form.get('commission').value
     }
-    console.log(formCreateUser);
-    
     this.authService.login(formCreateUser).subscribe(
       () => {
       setTimeout(() => {
@@ -49,8 +47,7 @@ export class CreateUserComponent implements OnInit{
       }, 1000);
     },
     error => {
-      this.errMsg = error.error.message,
-      console.log(error.error.message);
+      this.errMsg = error.error.message
     })
     
   }

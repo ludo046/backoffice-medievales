@@ -34,15 +34,12 @@ export class ModifyPartenaireComponent implements OnInit{
     this.partenaireService.getSinglePartenaire(this.data)
     this.mypartenaire = this.partenaireService.singlePartenaire$.subscribe(
       (partenaire) => {
-        this.partenaire = partenaire;
-        console.log(this.partenaire);
-        
+        this.partenaire = partenaire;      
       },
       (error) => {
         this.errMsg = JSON.stringify(error);
       }
     );
-    console.log(this.mypartenaire);
     
     this.form = this.formbuilder.group({
       partenaireName: this.formbuilder.control('',Validators.required),
@@ -83,16 +80,12 @@ export class ModifyPartenaireComponent implements OnInit{
       activate : this.form.get('activate').value,
       picture : this.file
     }
-    console.log(partenaire);
     this.partenaireService.modifyPartenaire(partenaire).subscribe(
       (result) => {
           //this.router.navigate([this.urlPage + "/" +suppUrl])
           if(result){
-            console.log('ok');
             window.location.reload()
           }
-          console.log(partenaire);
-          
       },
       error => {
       this.errorMsg = error.error.message

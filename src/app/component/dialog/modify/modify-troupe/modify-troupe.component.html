@@ -60,6 +60,6 @@
       </form>
     <mat-dialog-actions>
       <button mat-button mat-dialog-close>Fermer</button>
-      <button mat-button mat-dialog-close (click)="modifyTroupe()">Valider</button>
+      <button *hasPermission="'troupe'" mat-button mat-dialog-close (click)="modifyTroupe()">Valider</button>
     </mat-dialog-actions>
 </div>

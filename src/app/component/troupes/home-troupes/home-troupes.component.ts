@@ -6,6 +6,7 @@ import {
 import { Subscription } from 'rxjs';
 import { TroupeService } from '../../service/troupe/troupe.service';
 import { getTroupe } from '../../../interface/troupe';
+import { AuthService } from '../../service/auth/auth.service';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class HomeTroupesComponent implements OnInit{
   constructor(
     public dialog: MatDialog,
     private troupesService : TroupeService,
+    private authService : AuthService
     ) {}
 
   openDialog() {
@@ -34,8 +36,6 @@ export class HomeTroupesComponent implements OnInit{
   ngOnInit(): void {
     this.alltroupe = this.troupesService.allTroupes$.subscribe(
       (troupes) => {
-        console.log(troupes);
-        
         this.troupes= troupes
         for(let i = 0; i < this.troupes.length; i++){
          const card = {

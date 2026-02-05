@@ -33,7 +33,6 @@ export class ArchiveService {
     formData.append('image', AddArchive.picture);
     formData.append('years', AddArchive.years)
     formData.append('teaser', AddArchive.teaser)
-    console.log(formData);
     
     return this.httpClient.post(`${this.ressourceUrl}add`,formData);
   }

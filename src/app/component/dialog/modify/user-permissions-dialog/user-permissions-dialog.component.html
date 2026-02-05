@@ -1,0 +1,68 @@
+<h2 mat-dialog-title>Droits de l'utilisateur</h2>
+
+<div mat-dialog-content [formGroup]="form" class="perm-container">
+  <p class="user-name">
+    Gestion des droits pour :
+    <strong>
+      {{ data.user.firstname || data.user.firstname }}
+      {{ data.user.lastname || data.user.lastname }}
+    </strong>
+  </p>
+
+
+
+  <div class="perm-section">
+    <mat-checkbox formControlName="isAdmin">
+      Administrateur (tous les droits)
+    </mat-checkbox>
+    <p class="hint" *ngIf="form.get('isAdmin')?.value">
+      Si administrateur est coché, les autres droits spécifiques ne sont plus nécessaires.
+    </p>
+  </div>
+
+
+
+  <div class="perm-section">
+    <p>Autorisations spécifiques :</p>
+
+    <div class="perm-grid">
+      <mat-checkbox formControlName="troupe">
+        Gérer les troupes
+      </mat-checkbox>
+
+      <mat-checkbox formControlName="campement">
+        Gérer les campements
+      </mat-checkbox>
+
+      <mat-checkbox formControlName="artisan">
+        Gérer les artisans
+      </mat-checkbox>
+
+      <mat-checkbox formControlName="animation">
+        Gérer les animations
+      </mat-checkbox>
+
+      <mat-checkbox formControlName="marche">
+        Gérer le marché
+      </mat-checkbox>
+
+      <mat-checkbox formControlName="partenaire">
+        Gérer les partenaires
+      </mat-checkbox>
+    </div>
+  </div>
+
+  <div *ngIf="errorMsg" class="error">
+    {{ errorMsg }}
+  </div>
+  <div *ngIf="successMsg" class="success">
+    {{ successMsg }}
+  </div>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Annuler</button>
+  <button *hasPermission="'admin'" mat-raised-button color="primary" (click)="save()" [disabled]="loading">
+    Enregistrer
+  </button>
+</div>

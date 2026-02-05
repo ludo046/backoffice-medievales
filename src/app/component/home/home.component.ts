@@ -12,7 +12,5 @@ export class HomeComponent implements OnInit{
 
   ngOnInit(): void {
       this.User = JSON.parse(sessionStorage.getItem('session'))
-      console.log(this.User);
-      
   }
 }

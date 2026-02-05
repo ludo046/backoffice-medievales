@@ -1,74 +1,93 @@
-import { Component } from '@angular/core';
-import { MatDialog,} from '@angular/material/dialog';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { AddUserComponent } from '../dialog/add/add-user/add-user.component';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../service/auth/auth.service';
 import { getUserModel } from '../../interface/auth';
 import { MatTableDataSource } from '@angular/material/table';
+import { UserPermissionsDialogComponent } from '../dialog/modify/user-permissions-dialog/user-permissions-dialog.component';
 
 @Component({
   selector: 'app-users',
   standalone: false,
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss',
-  
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit, OnDestroy {
+  private allUserSub: Subscription;
+  public users: getUserModel[] = [];
+  public errorMsg: string;
+  public message: string;
 
-  private allUser: Subscription;
-  public users : getUserModel[];
-  public createCard = [];
-  public errorMsg : string;
-  public message : string;
-  public displayedColumns: string[] = ['Id', 'Prénom', 'Nom', 'Téléphone', 'Email', 'Admin'];
-  dataSource
+  public displayedColumns: string[] = [
+    'Id',
+    'Prénom',
+    'Nom',
+    'Téléphone',
+    'Email',
+    'Admin',
+    'Actions',
+  ];
 
-  constructor(public dialog: MatDialog,
-              private authService : AuthService
+  dataSource: MatTableDataSource<getUserModel>;
+
+  constructor(
+    public dialog: MatDialog,
+    private authService: AuthService
   ) {}
 
   openDialog() {
     this.dialog.open(AddUserComponent);
   }
+
   ngOnInit(): void {
-    this.allUser = this.authService.allUsers$.subscribe(
+    this.allUserSub = this.authService.allUsers$.subscribe(
       (users) => {
-        console.log(users);
-        
-        this.users = users
-        for(let i = 0; i < this.users.length; i++){
-         const card = {
-           id : this.users[i].id,
-           firstName : this.users[i].firstname,
-           lastName : this.users[i].lastname,
-           email : this.users[i].email,
-           phone : this.users[i].phone,
-           isAdmin: this.users[i].isAdmin
-         }
-         this.createCard.push(card)
-         this.dataSource = new MatTableDataSource(this.users);
+        this.users = users || [];
+        this.dataSource = new MatTableDataSource(this.users);
+
+        if (this.users.length === 0) {
+          this.message = 'Aucun utilisateur disponible !';
         }
       },
-      (error) => { 
+      (error) => {
         this.errorMsg = JSON.stringify(error);
       }
     );
-    this.authService.getAllUser()
-    if(this.createCard.length === 0){
-      this.message = 'Aucun utilisateur disponible !'
-    }
 
-    
+    this.authService.getAllUser();
+  }
+
+  ngOnDestroy(): void {
+    if (this.allUserSub) {
+      this.allUserSub.unsubscribe();
+    }
   }
 
   applyFilter(event: Event) {
-    this.dataSource = new MatTableDataSource(this.users);
-    console.log(this.dataSource);
+    if (!this.dataSource) {
+      this.dataSource = new MatTableDataSource(this.users);
+    }
+
     const filterValue = (event.target as HTMLInputElement).value;
-    console.log(filterValue);
-    
     this.dataSource.filter = filterValue.trim().toLowerCase();
-    console.log(this.dataSource);
-    
   }
+
+  openPermissionsDialog(user: getUserModel) {
+    const dialogRef = this.dialog.open(UserPermissionsDialogComponent, {
+      width: '500px',
+      data: { user },
+    });
+
+    dialogRef.afterClosed().subscribe((updated) => {
+      if (updated) {
+        // On rafraîchit la liste si les droits ont changé
+        this.authService.getAllUser();
+      }
+    });
+  }
+
+  canEdit(): boolean {
+  return this.authService.isAdmin(); // admin ONLY
+}
 }

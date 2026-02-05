@@ -31,7 +31,6 @@ export class AnimationService {
     formData.append('description', addtroupe.description)
     formData.append('price', addtroupe.price)
     formData.append('image', addtroupe.picture);
-    console.log(formData);
     
     return this.httpClient.post(`${this.ressourceUrl}add`,formData);
   }

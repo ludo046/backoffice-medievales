@@ -34,16 +34,12 @@ export class ModifyArchiveComponent {
     this.archiveService.getSingleArchive(this.data)
     this.myArchive = this.archiveService.singleArchive$.subscribe(
       (archive) => {
-        this.archive = archive;
-        console.log(this.archive);
-        
+        this.archive = archive; 
       },
       (error) => {
         this.errMsg = JSON.stringify(error);
       }
     );
-    console.log(this.myArchive);
-    
     this.form = this.formbuilder.group({
       picture : this.formbuilder.control(''),
       years: this.formbuilder.control('',Validators.required),
@@ -65,17 +61,13 @@ export class ModifyArchiveComponent {
       years : this.form.get('years').value,
       teaser : this.form.get('teaser').value,
     }
-    console.log(archive);
     this.archiveService.modifyArchive(archive).subscribe(
       (result) => {
           //this.router.navigate([this.urlPage + "/" +suppUrl])
           if(result){
-            console.log('ok');
             window.location.reload()
           }
-          console.log(archive);
-          
-      },
+        },
       error => {
       this.errorMsg = error.error.message
       }

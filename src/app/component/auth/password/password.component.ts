@@ -40,7 +40,6 @@ export class PasswordComponent implements OnInit{
       code: this.form.get('code').value,
       password: this.form.get('password').value
     }
-    console.log(formPassword);
     
     this.authService.createPassword(formPassword).subscribe(
       result => {
@@ -51,8 +50,7 @@ export class PasswordComponent implements OnInit{
         }
     },
     error => {
-      this.errMsg = error.error.message,
-      console.log(this.errMsg);
+      this.errMsg = error.error.message
     })
     
   }

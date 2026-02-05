@@ -35,15 +35,12 @@ export class ModifyCampementComponent {
     console.log(this.data)
     this.mycampement = this.campementService.singlecampement$.subscribe(
       (campement) => {
-        this.campement = campement;
-        console.log(this.campement);
-        
+        this.campement = campement; 
       },
       (error) => {
         this.errMsg = JSON.stringify(error);
       }
     );
-    console.log(this.mycampement);
     
     this.form = this.formbuilder.group({
       companieName: this.formbuilder.control('',Validators.required),
@@ -84,16 +81,12 @@ export class ModifyCampementComponent {
       picture : this.file,
       activate : this.form.get('activate').value 
     }
-    console.log(campement);
     this.campementService.modifyCampement(campement).subscribe(
       (result) => {
           //this.router.navigate([this.urlPage + "/" +suppUrl])
           if(result){
-            console.log('ok');
             window.location.reload()
           }
-          console.log(campement);
-          
       },
       error => {
       this.errorMsg = error.error.message

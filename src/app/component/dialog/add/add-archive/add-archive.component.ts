@@ -42,14 +42,11 @@ export class AddArchiveComponent {
       teaser : this.form.get('teaser').value,
       
     }
-    console.log(archive);
     this.archivesService.createArchive(archive).subscribe(
       (result) => {
           //this.router.navigate([this.urlPage + "/" +suppUrl])
           if(result){
-            console.log('ok');
           }
-          console.log(archive);
           window.location.reload()
       },
       error => {

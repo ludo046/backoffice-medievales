@@ -31,7 +31,6 @@ export class PartenaireService {
     formData.append('site', addpartenaire.site)
     formData.append('texte',addpartenaire.texte)
     formData.append('image', addpartenaire.picture);
-    console.log(formData);
     
     return this.httpClient.post(`${this.ressourceUrl}add`,formData);
   }

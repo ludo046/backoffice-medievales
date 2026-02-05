@@ -58,16 +58,12 @@ export class AddArtisanComponent implements OnInit{
       taille : this.form.get('taille').value,
       picture : this.file
     }
-    console.log(artisan);
     this.artisansService.createArtisan(artisan).subscribe(
       (result) => {
           //this.router.navigate([this.urlPage + "/" +suppUrl])
           if(result){
-            console.log('ok');
             window.location.reload()
-          }
-          console.log(artisan);
-          
+          }       
       },
       error => {
       this.errorMsg = error.error.message

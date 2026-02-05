@@ -56,16 +56,12 @@ export class AddPartenaireComponent {
       texte : this.form.get('texte').value,
       picture : this.file
     }
-    console.log(partenaire);
     this.partenairesService.createPartenaire(partenaire).subscribe(
       (result) => {
           //this.router.navigate([this.urlPage + "/" +suppUrl])
           if(result){
-            console.log('ok');
             window.location.reload()
           }
-          console.log(partenaire);
-          
       },
       error => {
       this.errorMsg = error.error.message

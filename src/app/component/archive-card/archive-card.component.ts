@@ -10,25 +10,25 @@ import { ModifyArchiveComponent } from '../dialog/modify/modify-archive/modify-a
 })
 export class ArchiveCardComponent {
   constructor(
-    private archiveService : ArchiveService,
+    private archiveService: ArchiveService,
     public dialog: MatDialog,
-  ) {}
+  ) { }
 
-    @Input() createCard: [];
-    public cardId
+  @Input() createCard: [];
+  public cardId
 
-      openDialog(id : number) {
-        this.cardId = id
-          this.dialog.open(ModifyArchiveComponent, {data : id})
+  openDialog(id: number) {
+    this.cardId = id
+    this.dialog.open(ModifyArchiveComponent, { data: id })
+  }
+
+  deleteArchive(id: number) {
+    this.archiveService.deleteArchive(id).subscribe(
+      () => {
+        window.location.reload()
       }
-    
-      deleteArchive(id : number){
-          this.archiveService.deleteArchive(id).subscribe(
-            () => {
-              window.location.reload()
-            }  
-          )
-        }
-      
+    )
+  }
+
 
 }

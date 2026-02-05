@@ -34,14 +34,12 @@ export class ModifyArtisanComponent implements OnInit{
     this.myartisan = this.artisanService.singleArtisan$.subscribe(
       (artisan) => {
         this.artisan = artisan;
-        console.log(this.artisan);
         
       },
       (error) => {
         this.errMsg = JSON.stringify(error);
       }
     );
-    console.log(this.myartisan);
     
     this.form = this.formbuilder.group({
       name: this.formbuilder.control('',Validators.required),
@@ -84,15 +82,12 @@ export class ModifyArtisanComponent implements OnInit{
       activate: this.form.get('activate').value,
       picture : this.file
     }
-    console.log(artisan);
     this.artisanService.modifyArtisan(artisan).subscribe(
       (result) => {
           //this.router.navigate([this.urlPage + "/" +suppUrl])
           if(result){
-            console.log('ok');
             window.location.reload()
           }
-          console.log(artisan);
           
       },
       error => {

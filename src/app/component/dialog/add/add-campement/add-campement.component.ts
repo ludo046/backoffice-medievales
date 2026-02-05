@@ -57,16 +57,12 @@ export class AddCampementComponent implements OnInit{
       price : this.form.get('price').value,
       picture : this.file
     }
-    console.log(campement);
     this.campementsService.createCampement(campement).subscribe(
       (result) => {
           //this.router.navigate([this.urlPage + "/" +suppUrl])
           if(result){
-            console.log('ok');
             window.location.reload()
           }
-          console.log(campement);
-          
       },
       error => {
       this.errorMsg = error.error.message

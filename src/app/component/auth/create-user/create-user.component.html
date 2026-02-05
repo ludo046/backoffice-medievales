@@ -24,5 +24,5 @@
         <input matInput  formControlName="commission" required (keyup.enter)="createUser()">
     </mat-form-field>
     <p *ngIf="errMsg">{{errMsg}}</p>
-    <button mat-raised-button color="primary" (click)="createUser()">Se connecter</button>
+    <button *hasPermission="'admin'" mat-raised-button color="primary" (click)="createUser()">Se connecter</button>
 </mat-card>

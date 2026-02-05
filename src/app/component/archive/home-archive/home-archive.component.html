@@ -1,6 +1,6 @@
 <app-nav></app-nav>
-<button class="add" mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="openDialog()">
+<button *hasPermission="'admin'" class="add" mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="openDialog()">
     <mat-icon>add</mat-icon>
 </button>
 <h2 *ngIf="createCard.length === 0">{{message}}</h2>
-<app-card [createCard]="createCard"></app-card>
+<app-card [createCard]="createCard" section="admin"></app-card>

@@ -36,15 +36,11 @@ export class ModifyTroupeComponent {
     this.myTroupe = this.troupeService.singleTroupe$.subscribe(
       (troupe) => {
         this.troupe = troupe;
-        console.log(this.troupe);
-        
       },
       (error) => {
         this.errMsg = JSON.stringify(error);
       }
     );
-    console.log(this.myTroupe);
-    
     this.form = this.formbuilder.group({
       companieName: this.formbuilder.control('',Validators.required),
       contact: this.formbuilder.control(''),
@@ -84,16 +80,12 @@ export class ModifyTroupeComponent {
       picture : this.file,
       activate : this.form.get('activate').value 
     }
-    console.log(troupe);
     this.troupeService.modifyTroupe(troupe).subscribe(
       (result) => {
           //this.router.navigate([this.urlPage + "/" +suppUrl])
           if(result){
-            console.log('ok');
             window.location.reload()
-          }
-          console.log(troupe);
-          
+          }    
       },
       error => {
       this.errorMsg = error.error.message

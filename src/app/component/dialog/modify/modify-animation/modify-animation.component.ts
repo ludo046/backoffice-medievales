@@ -19,10 +19,10 @@ export class ModifyAnimationComponent {
   public url: string;
   public selectedFiles: File;
   public errorMsg: any;
-  public id: number 
+  public id: number
   public troupe: getTroupe
-  public myTroupe : Subscription
-  public errMsg : string
+  public myTroupe: Subscription
+  public errMsg: string
   public checked = true;
 
   constructor(
@@ -37,28 +37,24 @@ export class ModifyAnimationComponent {
     this.myTroupe = this.animationService.singleAnimation$.subscribe(
       (troupe) => {
         this.troupe = troupe;
-        console.log(this.troupe);
-        
       },
       (error) => {
         this.errMsg = JSON.stringify(error);
       }
     );
-    console.log(this.myTroupe);
-    
     this.form = this.formbuilder.group({
-      companieName: this.formbuilder.control('',Validators.required),
+      companieName: this.formbuilder.control('', Validators.required),
       contact: this.formbuilder.control(''),
       phone: this.formbuilder.control(''),
       email: this.formbuilder.control(''),
       person: this.formbuilder.control(''),
       town: this.formbuilder.control('', Validators.required),
-      contry: this.formbuilder.control('',Validators.required),
+      contry: this.formbuilder.control('', Validators.required),
       postalCode: this.formbuilder.control('', Validators.required),
-      description : this.formbuilder.control('', Validators.required),
+      description: this.formbuilder.control('', Validators.required),
       price: this.formbuilder.control('', Validators.required),
-      picture : this.formbuilder.control(''),
-      activate : this.formbuilder.control('') 
+      picture: this.formbuilder.control(''),
+      activate: this.formbuilder.control('')
     })
   }
 
@@ -66,38 +62,35 @@ export class ModifyAnimationComponent {
     this.file = (event.target as HTMLInputElement).files[0];
   }
 
-  modifyTroupe(){
-    if(this.file === undefined){
+  modifyTroupe() {
+    if (this.file === undefined) {
       this.file = this.troupe.picture
     }
-    const troupe : getTroupe = {
-      id : this.troupe.id,
-      companieName : this.form.get('companieName').value,
-      contact : this.form.get('contact').value,
-      email : this.form.get('email').value,
-      person : this.form.get('person').value,
-      phone : this.form.get('phone').value,
-      ville : this.form.get('town').value,
-      pays : this.form.get('contry').value,
-      postalCode : this.form.get('postalCode').value,
-      description : this.form.get('description').value,
-      price : this.form.get('price').value,
-      picture : this.file,
-      activate : this.form.get('activate').value 
+    const troupe: getTroupe = {
+      id: this.troupe.id,
+      companieName: this.form.get('companieName').value,
+      contact: this.form.get('contact').value,
+      email: this.form.get('email').value,
+      person: this.form.get('person').value,
+      phone: this.form.get('phone').value,
+      ville: this.form.get('town').value,
+      pays: this.form.get('contry').value,
+      postalCode: this.form.get('postalCode').value,
+      description: this.form.get('description').value,
+      price: this.form.get('price').value,
+      picture: this.file,
+      activate: this.form.get('activate').value
     }
-    console.log(troupe);
+
     this.animationService.modifyTroupe(troupe).subscribe(
       (result) => {
-          //this.router.navigate([this.urlPage + "/" +suppUrl])
-          if(result){
-            console.log('ok');
-            window.location.reload()
-          }
-          console.log(troupe);
-          
+        //this.router.navigate([this.urlPage + "/" +suppUrl])
+        if (result) {
+          window.location.reload()
+        }
       },
       error => {
-      this.errorMsg = error.error.message
+        this.errorMsg = error.error.message
       }
     )
   }

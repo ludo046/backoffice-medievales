@@ -47,6 +47,10 @@ import { AddArchiveComponent } from './component/dialog/add/add-archive/add-arch
 import { HomeArchiveComponent } from './component/archive/home-archive/home-archive.component';
 import { ModifyArchiveComponent } from './component/dialog/modify/modify-archive/modify-archive.component';
 import { ArchiveCardComponent } from './component/archive-card/archive-card.component';
+import { UserPermissionsDialogComponent } from './component/dialog/modify/user-permissions-dialog/user-permissions-dialog.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { HasPermissionDirective } from './directives/has-permission.directive.ts.directive';
+import { PhoneFormatPipe } from './shared/phone-format.pipe';
 
 @NgModule({
   declarations: [
@@ -79,6 +83,10 @@ import { ArchiveCardComponent } from './component/archive-card/archive-card.comp
     HomeArchiveComponent,
     ModifyArchiveComponent,
     ArchiveCardComponent,
+    UserPermissionsDialogComponent,
+    HasPermissionDirective,
+    PhoneFormatPipe
+    ,
   ],
   imports: [
     BrowserModule,
@@ -99,7 +107,9 @@ import { ArchiveCardComponent } from './component/archive-card/archive-card.comp
     MatSlideToggleModule,
     MatOption,
     MatSelectModule,
-    MatTableModule
+    MatTableModule,
+    MatCheckboxModule
+    
   ],
 
   providers: [

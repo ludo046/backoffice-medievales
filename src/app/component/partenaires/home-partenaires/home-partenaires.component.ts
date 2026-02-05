@@ -32,8 +32,6 @@ export class HomePartenairesComponent {
   ngOnInit(): void {
     this.allpartenaires = this.partenairesService.allPartenaires$.subscribe(
       (partenaire) => {
-        console.log(partenaire);
-
         this.partenaires = partenaire
         this.partenaires.sort(function compare(a, b) {
           if (a.montant > b.montant)
@@ -61,13 +59,7 @@ export class HomePartenairesComponent {
          }
          this.createCard.push(card)
         }
-        console.log(this.totalArray);
-        // for (let j = 0; j < this.totalArray.length;j++) {
-        //   this.total += this.totalArray[j]
-        // }
-        this.total = this.totalArray.reduce((a,b) => a+b)
-        console.log(this.total);
-        
+        this.total = this.totalArray.reduce((a,b) => a+b)      
       },
       (error) => {
         this.errorMsg = JSON.stringify(error);

@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit{
       email: this.form.get('email').value,
       password: this.form.get('password').value
     }
-    console.log(formLogin);
     
     this.authService.login(formLogin).subscribe(
       result => {
@@ -49,8 +48,7 @@ export class LoginComponent implements OnInit{
       }, 1000);
     },
     error => {
-      this.errMsg = error.error.message,
-      console.log(error.error.message);
+      this.errMsg = error.error.message
     })
     
   }

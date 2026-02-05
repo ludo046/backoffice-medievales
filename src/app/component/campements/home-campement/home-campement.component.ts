@@ -30,8 +30,6 @@ export class HomeCampementComponent {
   ngOnInit(): void {
     this.allcampements = this.campementsService.allCampement$.subscribe(
       (campement) => {
-        console.log(campement);
-        
         this.campements = campement
         for(let i = 0; i < this.campements.length; i++){
          const card = {

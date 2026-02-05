@@ -56,16 +56,12 @@ export class AddAnimationComponent {
       price : this.form.get('price').value,
       picture : this.file
     }
-    console.log(troupe);
     this.animationService.createTroupe(troupe).subscribe(
       (result) => {
           //this.router.navigate([this.urlPage + "/" +suppUrl])
           if(result){
-            console.log('ok');
             window.location.reload()
-          }
-          console.log(troupe);
-          
+          }  
       },
       error => {
       this.errorMsg = error.error.message

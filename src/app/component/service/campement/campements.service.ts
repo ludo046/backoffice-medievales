@@ -42,7 +42,6 @@ export class CampementsService {
     formData.append('description', addcampement.description)
     formData.append('price', addcampement.price)
     formData.append('image', addcampement.picture);
-    console.log(formData);
     
     return this.httpClient.post(`${this.ressourceUrl}add`,formData);
   }

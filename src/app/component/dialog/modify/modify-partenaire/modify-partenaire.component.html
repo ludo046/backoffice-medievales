@@ -69,6 +69,6 @@
     </form>
   <mat-dialog-actions>
     <button mat-button mat-dialog-close>Fermer</button>
-    <button mat-button mat-dialog-close (click)="modifyPartenaire()">Valider</button>
+    <button *hasPermission="'partenaire'" mat-button mat-dialog-close (click)="modifyPartenaire()">Valider</button>
   </mat-dialog-actions>
 </div>

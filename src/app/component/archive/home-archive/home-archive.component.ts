@@ -14,14 +14,14 @@ export class HomeArchiveComponent {
   private allarchives: Subscription;
   public archives: getArchive[];
   public createCard = [];
-  public errorMsg : string;
-  public message : string;
+  public errorMsg: string;
+  public message: string;
 
   constructor(
     public dialog: MatDialog,
-    private archiveService : ArchiveService,
-    ) {}
-  
+    private archiveService: ArchiveService,
+  ) { }
+
   openDialog() {
     this.dialog.open(AddArchiveComponent);
   }
@@ -29,17 +29,15 @@ export class HomeArchiveComponent {
   ngOnInit(): void {
     this.allarchives = this.archiveService.allArchive$.subscribe(
       (archive) => {
-        console.log(archive);
-        
         this.archives = archive
-        for(let i = 0; i < this.archives.length; i++){
-         const card = {
-           id : this.archives[i].id,
-           picture: this.archives[i].picture,
-           name : this.archives[i].years,
-           contact : this.archives[i].teaser,
-         }
-         this.createCard.push(card)
+        for (let i = 0; i < this.archives.length; i++) {
+          const card = {
+            id: this.archives[i].id,
+            picture: this.archives[i].picture,
+            name: this.archives[i].years,
+            contact: this.archives[i].teaser,
+          }
+          this.createCard.push(card)
         }
       },
       (error) => {
@@ -47,7 +45,7 @@ export class HomeArchiveComponent {
       }
     );
     this.archiveService.getAllArchives()
-    if(this.createCard.length === 0){
+    if (this.createCard.length === 0) {
       this.message = 'Aucune archive disponible !'
     }
   }

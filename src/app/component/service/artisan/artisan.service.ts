@@ -42,8 +42,6 @@ export class ArtisanService {
     formData.append('person', addartisan.person)
     formData.append('taille', addartisan.taille)
     formData.append('image', addartisan.picture);
-    console.log(formData);
-    
     return this.httpClient.post(`${this.ressourceUrl}add`,formData);
   }
 
